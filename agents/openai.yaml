@@ -1,0 +1,4 @@
+interface:
+  display_name: "Alpha UI Rules"
+  short_description: "Vue 与 Ant Design Vue 基础 UI 规范守门员"
+  default_prompt: "使用 $alpha-ui-rules 创建或审查 Vue 页面，确保颜色、排版和基础组件符合 Alpha 设计规范。"
