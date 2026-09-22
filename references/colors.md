@@ -19,9 +19,15 @@ Use semantic tokens in page and component code. Sources: Figma `01-Tokens` and `
 
 | Purpose | Token | Source |
 |---|---|---|
-| Dominant/strong/support text | `--text-dominant-950`, `--text-strong-900`, `--text-support-800` | `neutral/950`, `/900`, `/800` |
-| Secondary/muted/soft text | `--text-sub-700`, `--text-muted-600`, `--text-soft-neutral-500` | `neutral/700`, `/600`, `/500` |
-| Disabled/white text | `--text-disabled-300`, `--text-white-0` | `neutral/350`, `/0` |
+| Dominant text | `--text-dominant-950` | `#171717` |
+| Strong text | `--text-strong-900` | `#333333` |
+| Support text | `--text-support-800` | `#4A4A4A` |
+| Sub/secondary text | `--text-sub-700` | `#666666` |
+| Muted text | `--text-muted-600` | `#737373` |
+| Soft neutral text | `--text-soft-neutral-500` | `#909399` |
+| Soft blue text (Figma name) | `--text-soft-blue-400` | `#999999` |
+| Disabled text | `--text-disabled-300` | `#C3C6C8` |
+| White text | `--text-white-0` | `#FFFFFF` |
 | Surfaces | `--bg-white`, `--bg-weak-50`, `--bg-soft-100`, `--bg-sub-hover-150`, `--bg-sub-200`, `--bg-strong-hover-250` | matching neutral scale |
 | Disabled button | `--bg-button-disabled` | `neutral/300` |
 | Borders | `--stroke-strong`, `--stroke-sub` | semantic direct values |
@@ -41,6 +47,7 @@ When the brand mapping is added, record it as a table in this file and update th
 
 ## Source cautions
 
-- Figma `text/soft-blue-400` resolves to `neutral/400`; normalize the code name to `--text-soft-neutral-400`.
-- Figma `text/disabled-300` resolves to `neutral/350`; preserve its semantic meaning rather than inferring from the suffix.
+- Figma node `188:302` is the source of truth for text semantics. Its exported values are `dominant #171717`, `strong #333333`, `support #4A4A4A`, `sub #666666`, `muted #737373`, `soft-neutral #909399`, `soft-blue #999999`, `disabled #C3C6C8`, and `white #FFFFFF`.
+- Do not infer a text color from the numeric suffix or from the primitive neutral scale. For example, `text/strong-900` is `#333333`, not a guessed `neutral/900` alias, and `text/disabled-300` is `#C3C6C8`.
+- Keep these values behind semantic CSS variables; the hex values above are documentation of the Figma source, not permission to add raw colors to page styles.
 - Outside an `alpha-ui-exception`, flag raw hex, rgb(a), hsl(a), named colors, and page-scoped Ant component state colors.
