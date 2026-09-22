@@ -1,5 +1,20 @@
 # Color rules
 
+## Figma source-of-truth and primary-color status
+
+The checked Figma exports are `01-Tokens` and `03-颜色调色板` (nodes `5:312` and `5:295`). The accompanying Figma screenshot explicitly defines the product primary semantic group as orange:
+
+| Semantic name in Figma | Primitive source | CSS token |
+|---|---|---|
+| `primary-text` | `orange/800` | `--primary-text-800` |
+| `primary-accent` | `orange/700` | `--primary-accent-700` |
+| `primary-brand` | `orange/600` | `--primary-brand-600` |
+| `primary-` | `orange/300` | `--primary-300` |
+| `primary-` | `orange/200` | `--primary-200` |
+| `primary-` | `orange/50` | `--primary-50` |
+
+Use `orange/600` as the default product primary/brand fill. Use `orange/700` for accent/hover emphasis and `orange/800` for primary text or pressed emphasis. The lighter `orange/300`, `/200`, and `/50` values are supporting backgrounds/borders, not the default button fill. Never substitute `blue/500`; blue is reserved for information semantics. Red/green/orange state ramps remain distinct from the primary semantic group.
+
 Use semantic tokens in page and component code. Sources: Figma `01-Tokens` and `03-颜色调色板`.
 
 | Purpose | Token | Source |
@@ -16,13 +31,16 @@ Use semantic tokens in page and component code. Sources: Figma `01-Tokens` and `
 
 Use `--icon-*` tokens for icons. Primitive `red`, `green`, `blue`, `orange`, and `neutral` variables belong only in the semantic-token definition layer.
 
-## Pending brand tokens
+## Primary semantic tokens
 
-Preserve these names but do not treat Figma fallback hex values as final: `--primary-brand-500`, `--primary-hover-400`, `--primary-accent-700`, `--primary-text-800`, `--primary-disabled-300`, `--primary-border-hover-200`, `--primary-bg-light-50`.
+The screenshot establishes these mappings. Keep them centralized in the theme layer (convert the primitive values to CSS variables there): `--primary-brand-600` → `orange/600`, `--primary-accent-700` → `orange/700`, `--primary-text-800` → `orange/800`, `--primary-300` → `orange/300`, `--primary-200` → `orange/200`, `--primary-50` → `orange/50`.
+
+Legacy names may exist in older component guidance (`--primary-brand-500`, `--primary-hover-400`, `--primary-disabled-300`, `--primary-border-hover-200`, `--primary-bg-light-50`). Do not assign them guessed values; migrate them to the explicit mappings above when a theme is updated.
+
+When the brand mapping is added, record it as a table in this file and update the corresponding CSS variables in one centralized theme layer. A component must not silently substitute a palette token.
 
 ## Source cautions
 
 - Figma `text/soft-blue-400` resolves to `neutral/400`; normalize the code name to `--text-soft-neutral-400`.
 - Figma `text/disabled-300` resolves to `neutral/350`; preserve its semantic meaning rather than inferring from the suffix.
 - Outside an `alpha-ui-exception`, flag raw hex, rgb(a), hsl(a), named colors, and page-scoped Ant component state colors.
-

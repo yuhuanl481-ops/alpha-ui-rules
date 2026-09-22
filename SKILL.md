@@ -19,6 +19,7 @@ Keep ordinary product UI consistent with Alpha Design System in Vue 3 + TypeScri
 
 - Use semantic CSS variables for ordinary text, backgrounds, borders, icons, and states. No new raw color literals in page styles.
 - Primitive palette values are sources for semantic tokens, not page usage guidance.
+- Figma defines the product primary semantic group as orange: `primary-brand` → `orange/600`, `primary-accent` → `orange/700`, and `primary-text` → `orange/800`; use the full mapping in [colors](references/colors.md). Never substitute the information blue ramp for primary.
 - Use PingFang SC with approved system fallbacks unless the project already defines the approved stack.
 - Do not invent typography, component dimensions, radii, or interaction colors.
 - Interactive controls require hover, focus-visible, active, disabled, and error behavior where applicable.

@@ -2,6 +2,8 @@
 
 Source: Figma component set `402:1029`. Use `<a-button>`; map Error intent to `danger`. Centralize Alpha sizing and state styling.
 
+Color dependency: Figma defines the primary button family with orange semantics. Use the centralized `--primary-brand-600` default, `--primary-accent-700` hover, and `--primary-text-800` pressed emphasis. Never implement a primary button with `blue/500`; blue is information-only.
+
 Variants: primary/Error intent; primary/secondary/text hierarchy; default/hover/active/disabled state; 40/36/32/28px height; no/leading/trailing/icon-only icon.
 
 | Height | Font/line | Weight | Horizontal padding | Radius |
@@ -19,4 +21,3 @@ Variants: primary/Error intent; primary/secondary/text hierarchy; default/hover/
 - Use real `disabled`, CSS state selectors, and accessible focus-visible. Never render persistent hover/active states in templates.
 
 Mapping: primary → `type="primary"`; secondary → default button plus centralized Alpha theme/wrapper; text → `type="text"`; Error → add `danger`.
-
